@@ -2,14 +2,14 @@
 
 import { useState } from 'react';
 import MultiFileUpload from '../components/MultiFileUpload';
-import MergeEditor from '../components/MergeEditor';
+import DuplicateDetector from '../components/DuplicateDetector';
 import MainLayout from '../components/MainLayout';
 import styles from './page.module.css';
 import Papa from 'papaparse';
 
 // Metadata is defined in layout.js since this is a client component
 
-export default function MergeLeadsPage() {
+export default function DuplicateDetectionPage() {
   const [csvUploaded, setCsvUploaded] = useState(false);
 
   const handleFilesUploaded = async (files) => {
@@ -31,7 +31,7 @@ export default function MergeLeadsPage() {
         // Add data from this file
         if (result.data && result.data.length > 0) {
           allData.push(...result.data);
-
+          
           // Collect all unique headers
           result.meta.fields.forEach(header => {
             if (!headers.includes(header)) {
@@ -47,8 +47,8 @@ export default function MergeLeadsPage() {
       sessionStorage.setItem('fileDetails', JSON.stringify(files.map(file => ({
         name: file.name,
         size: file.size,
-        rows: 0, // Will be updated in MergeEditor
-        columns: 0 // Will be updated in MergeEditor
+        rows: 0, // Will be updated in DuplicateDetector
+        columns: 0 // Will be updated in DuplicateDetector
       }))));
 
       setCsvUploaded(true);
@@ -72,12 +72,12 @@ export default function MergeLeadsPage() {
           <div className={styles.uploadContainer}>
             <MultiFileUpload
               onFilesUploaded={handleFilesUploaded}
-              title="Merge Leads"
-              subtitle="Upload multiple CSV files to merge leads"
+              title="Duplicate Detection"
+              subtitle="Upload multiple CSV files to detect and remove duplicate leads"
             />
           </div>
         ) : (
-          <MergeEditor onBackToUpload={handleBackToUpload} />
+          <DuplicateDetector onBackToUpload={handleBackToUpload} />
         )}
       </div>
     </MainLayout>

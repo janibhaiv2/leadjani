@@ -2,6 +2,7 @@
   --background: #121212;
   --foreground: #e0e0e0;
   --primary: #3f8cff;
+  --primary-rgb: 63, 140, 255; /* RGB values for primary color */
   --primary-hover: #2970d6;
   --secondary: #2d2d2d;
   --secondary-hover: #3d3d3d;
@@ -17,6 +18,7 @@
   --success: #4caf50;
   --muted-text: #a0a0a0;
   --highlight: rgba(63, 140, 255, 0.15);
+  --disabled: #666666;
 }
 
 html,

@@ -15,13 +15,14 @@ export default function MergeEditor({ onBackToUpload }) {
     // Get data from sessionStorage
     const storedData = sessionStorage.getItem('csvData');
     const storedHeaders = sessionStorage.getItem('csvHeaders');
+    const storedFileDetails = sessionStorage.getItem('fileDetails');
 
     if (!storedData || !storedHeaders) {
       onBackToUpload();
       return;
     }
 
-    const processFile = async () => {
+    const processFiles = async () => {
       setIsLoading(true);
       setError(null);
 
@@ -29,13 +30,25 @@ export default function MergeEditor({ onBackToUpload }) {
         const parsedData = JSON.parse(storedData);
         const parsedHeaders = JSON.parse(storedHeaders);
 
-        // Create file info
-        const fileInfo = [{
-          name: "Uploaded CSV",
-          size: "N/A",
-          rows: parsedData.length,
-          columns: parsedHeaders.length
-        }];
+        // Process file details
+        let fileInfo = [];
+        if (storedFileDetails) {
+          // Use stored file details if available
+          fileInfo = JSON.parse(storedFileDetails).map(file => ({
+            ...file,
+            size: formatFileSize(file.size),
+            rows: parsedData.length, // This is approximate as we've merged the data
+            columns: parsedHeaders.length
+          }));
+        } else {
+          // Fallback to a single file entry if no file details are stored
+          fileInfo = [{
+            name: "Merged CSV",
+            size: "N/A",
+            rows: parsedData.length,
+            columns: parsedHeaders.length
+          }];
+        }
 
         setFileDetails(fileInfo);
 
@@ -43,15 +56,24 @@ export default function MergeEditor({ onBackToUpload }) {
         setHeaders(parsedHeaders);
         setMergedData(parsedData);
       } catch (error) {
-        console.error('Error processing file:', error);
-        setError('Error processing file. Please try again.');
+        console.error('Error processing files:', error);
+        setError('Error processing files. Please try again.');
       } finally {
         setIsLoading(false);
       }
     };
 
-    processFile();
+    processFiles();
   }, [onBackToUpload]);
+
+  // Helper function to format file size
+  const formatFileSize = (bytes) => {
+    if (bytes === 0 || !bytes) return 'N/A';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+  };
 
   const processAndDownload = () => {
     if (mergedData.length === 0) {
@@ -93,7 +115,7 @@ export default function MergeEditor({ onBackToUpload }) {
           date: new Date().toISOString(),
           rowCount: mergedData.length,
           columnCount: headers.length,
-          filesCount: files.length,
+          filesCount: fileDetails.length,
           type: 'merge'
         });
 
@@ -126,7 +148,7 @@ export default function MergeEditor({ onBackToUpload }) {
       <div className={styles.statsCard}>
         <div className={styles.statItem}>
           <span className={styles.statLabel}>Total Files:</span>
-          <span className={styles.statValue}>{files.length}</span>
+          <span className={styles.statValue}>{fileDetails.length}</span>
         </div>
         <div className={styles.statItem}>
           <span className={styles.statLabel}>Total Leads:</span>

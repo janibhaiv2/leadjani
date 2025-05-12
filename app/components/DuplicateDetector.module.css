@@ -1,0 +1,458 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.title {
+  font-size: 2.2rem;
+  margin-bottom: 0.6rem;
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: var(--muted-text);
+  margin-bottom: 2rem;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  font-size: 1.2rem;
+  color: var(--primary);
+}
+
+.loading:before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+  border-radius: 50%;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid var(--primary);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.statsCard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border);
+}
+
+.statItem {
+  flex: 1;
+  min-width: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.statLabel {
+  font-size: 0.9rem;
+  color: var(--muted-text);
+  margin-bottom: 0.5rem;
+}
+
+.statValue {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.controlsContainer {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-end;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border);
+}
+
+.controlGroup {
+  flex: 1;
+  min-width: 250px;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--foreground);
+}
+
+.select {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background-color: var(--input-bg);
+  color: var(--foreground);
+  font-size: 1rem;
+}
+
+.actionButton {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary);
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  min-width: 180px;
+}
+
+.actionButton:hover {
+  background-color: var(--primary-hover);
+}
+
+.actionButton:disabled {
+  background-color: var(--disabled);
+  cursor: not-allowed;
+}
+
+.resultsContainer {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border);
+}
+
+.resultsHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  color: var(--foreground);
+  font-weight: 500;
+  margin: 0;
+}
+
+.toggleContainer {
+  display: flex;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+}
+
+.toggleButton {
+  padding: 0.6rem 1.2rem;
+  background-color: var(--card-bg);
+  border: none;
+  color: var(--muted-text);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.9rem;
+}
+
+.toggleButton.active {
+  background-color: var(--primary);
+  color: white;
+}
+
+.removeAllButton {
+  padding: 0.6rem 1.2rem;
+  background-color: var(--error);
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 0.9rem;
+}
+
+.removeAllButton:hover {
+  opacity: 0.9;
+}
+
+.removeAllButton:disabled {
+  background-color: var(--disabled);
+  cursor: not-allowed;
+}
+
+.actionColumn {
+  width: 80px;
+  text-align: center;
+}
+
+.keepButton {
+  padding: 0.4rem 0.8rem;
+  background-color: var(--primary);
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.keepButton:hover {
+  background-color: var(--primary-hover);
+}
+
+.tableContainer {
+  overflow-x: auto;
+  margin-bottom: 1rem;
+  max-width: 100%;
+  width: 100%;
+}
+
+.dataTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.dataTable th {
+  background-color: var(--hover-bg);
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 500;
+  color: var(--foreground);
+  border-bottom: 1px solid var(--border);
+}
+
+.dataTable td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  color: var(--foreground);
+}
+
+.dataTable tr:hover td {
+  background-color: var(--hover-bg);
+}
+
+.checkboxColumn {
+  width: 40px;
+  text-align: center;
+}
+
+.selectedRow td {
+  background-color: rgba(var(--primary-rgb), 0.1);
+}
+
+.selectedRow:hover td {
+  background-color: rgba(var(--primary-rgb), 0.15);
+}
+
+.duplicateActions {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: var(--hover-bg);
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+
+.selectionInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.selectionCount {
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+.selectionButtons {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.selectButton {
+  padding: 0.5rem 1rem;
+  background-color: var(--hover-bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--foreground);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.selectButton:hover {
+  background-color: var(--border);
+}
+
+.selectButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.removeButton {
+  padding: 0.5rem 1rem;
+  background-color: var(--error);
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.removeButton:hover {
+  background-color: #ff3333;
+}
+
+.removeButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.emptyMessage {
+  text-align: center;
+  color: var(--muted-text);
+  margin: 2rem 0;
+  font-style: italic;
+}
+
+.moreMessage {
+  text-align: center;
+  color: var(--muted-text);
+  margin-top: 1rem;
+  font-size: 0.9rem;
+}
+
+.filesContainer {
+  margin-top: 2rem;
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border);
+}
+
+.filesList {
+  margin-top: 1rem;
+}
+
+.fileCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--hover-bg);
+  border-radius: 8px;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border);
+}
+
+.fileInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.fileName {
+  font-weight: 500;
+  margin-bottom: 0.3rem;
+  color: var(--foreground);
+}
+
+.fileStats {
+  font-size: 0.85rem;
+  color: var(--muted-text);
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.backButton {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--hover-bg);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--foreground);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.backButton:hover {
+  background-color: var(--border);
+}
+
+.proceedButton {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary);
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.proceedButton:hover {
+  background-color: var(--primary-hover);
+}
+
+.proceedButton:disabled {
+  background-color: var(--disabled);
+  cursor: not-allowed;
+}
+
+.error {
+  color: var(--error);
+  background-color: rgba(255, 82, 82, 0.1);
+  padding: 1rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+  text-align: center;
+  border: 1px solid rgba(255, 82, 82, 0.3);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .statsCard {
+    flex-direction: column;
+  }
+
+  .buttonContainer {
+    flex-direction: column;
+  }
+
+  .backButton, .proceedButton {
+    width: 100%;
+  }
+}
