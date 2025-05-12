@@ -136,6 +136,21 @@
   color: var(--muted-text);
   font-size: 0.9rem;
   line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.featureLink {
+  display: inline-block;
+  color: var(--primary);
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: color 0.2s, transform 0.2s;
+  text-decoration: none;
+}
+
+.featureLink:hover {
+  color: var(--primary-hover);
+  transform: translateX(5px);
 }
 
 .instructionsContainer {
