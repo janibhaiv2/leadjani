@@ -1,0 +1,35 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.mainContent {
+  flex: 1;
+  padding: 2rem;
+  width: 100%;
+  transition: margin-left 0.3s ease;
+}
+
+/* Desktop styles */
+@media (min-width: 1024px) {
+  .mainContent {
+    margin-left: 280px;
+    width: calc(100% - 280px);
+  }
+}
+
+/* Tablet styles */
+@media (max-width: 1023px) {
+  .mainContent {
+    margin-left: 0;
+    padding: 1.5rem;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 640px) {
+  .mainContent {
+    padding: 1rem;
+    padding-top: 4rem; /* Space for the menu button */
+  }
+}

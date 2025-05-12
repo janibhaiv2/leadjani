@@ -1,0 +1,18 @@
+.uploadContainer {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Tablet styles */
+@media (max-width: 1023px) {
+  .uploadContainer {
+    max-width: 100%;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 640px) {
+  .uploadContainer {
+    max-width: 100%;
+  }
+}
