@@ -303,7 +303,7 @@ export default function FilterEditor({ onBackToUpload }) {
         </div>
 
         <div className={styles.filtersIntro}>
-          <strong>How to filter:</strong> Click "Add Filter" to select a column, then check the values you want to include.
+          <strong>How to filter:</strong> Click &quot;Add Filter&quot; to select a column, then check the values you want to include.
           You can add multiple filters to narrow down your results. All filters will be applied together.
         </div>
 
